@@ -2,7 +2,7 @@
   "name": "bun-plugin-style",
   "module": "dist/index.js",
   "main": "dist/index.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Bun plugin to import css/scss as string",
   "type": "module",
   "author": "Gmero <gmerocom@gmail.com>",
@@ -22,9 +22,11 @@
     "@types/bun": "latest",
     "@xbmlz/eslint-config-prettier": "^0.1.17",
     "@xbmlz/eslint-config-ts": "^0.1.17",
-    "browserslist": "^4.23.0",
     "bun-plugin-dts": "^0.2.3",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.0"
+  },
+  "dependencies": {
+    "browserslist": "^4.23.0",
     "lightningcss": "^1.24.1",
     "sass": "^1.77.1"
   },

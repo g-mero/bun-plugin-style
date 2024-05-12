@@ -3,7 +3,7 @@ import dts from 'bun-plugin-dts'
 await Bun.build({
     entrypoints: ['./src/index.ts'],
     outdir: './dist',
-    external: ['lightningcss','sass'],
+    external: ['lightningcss','sass','browserslist'],
     target: 'bun',
     plugins: [dts()]
 })
