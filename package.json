@@ -2,7 +2,7 @@
   "name": "bun-plugin-style",
   "module": "dist/index.js",
   "main": "dist/index.js",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A Bun plugin to import css/scss as string",
   "type": "module",
   "author": "Gmero <gmerocom@gmail.com>",

@@ -5,7 +5,7 @@ function cssPlugin(): BunPlugin {
   return {
     name: 'bun-plugin-style',
     async setup(build) {
-      const { compileString } = await import('sass')
+      const { compileAsync } = await import('sass')
       const { transform } = await import('lightningcss')
 
       // when a .scss|css file is imported...
@@ -13,7 +13,7 @@ function cssPlugin(): BunPlugin {
         // read and parse the file
         let text = await Bun.file(args.path).text()
         if (args.path.endsWith('.scss')) {
-          text = compileString(text).css
+          text = (await compileAsync(args.path)).css
         }
 
         const { code } = transform({
@@ -23,7 +23,9 @@ function cssPlugin(): BunPlugin {
           targets: browersTarget,
         })
 
-        const contents = `export default ${JSON.stringify(code.toString())}`
+        const contents = `
+        export default ${JSON.stringify(code.toString())}
+        `
 
         // and returns it as a module
         return {
