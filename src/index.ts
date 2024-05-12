@@ -1,9 +1,9 @@
-import type { BunPlugin } from 'bun'
+import { type BunPlugin } from 'bun'
 import browersTarget from './browserslist'
 
 function cssPlugin(): BunPlugin {
   return {
-    name: 'bun-plugin-css',
+    name: 'bun-plugin-style',
     async setup(build) {
       const { compileString } = await import('sass')
       const { transform } = await import('lightningcss')
@@ -23,13 +23,12 @@ function cssPlugin(): BunPlugin {
           targets: browersTarget,
         })
 
+        const contents = `export default ${JSON.stringify(code.toString())}`
+
         // and returns it as a module
         return {
-          exports: {
-            content: code.toString(),
-            default: code.toString(),
-          },
-          loader: 'object', // special loader for JS objects
+          contents,
+          loader: 'js', // special loader for JS objects
         }
       })
     },

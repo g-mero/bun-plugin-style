@@ -1,10 +1,10 @@
-import { test } from "bun:test";
+import { test, expect } from "bun:test";
 import CSSPlugin from "../src";
 
-test("css loader", async () => {
-  const plugin = CSSPlugin();
-  await Bun.plugin(plugin);
-  const scss = await import("./test.scss");
-  console.log(scss);
-  Bun.plugin.clearAll();
-});
+test('build', async()=>{
+  await Bun.build({
+    entrypoints: ['./test/test.ts'],
+    outdir: './test/dist',
+    plugins: [CSSPlugin()],
+  })
+})
